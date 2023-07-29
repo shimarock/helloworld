@@ -1,5 +1,5 @@
 import streamlit as st
-from datetime import datetime
+from datetime import datetime, time
 
 # サイドバーで選択肢を設定
 option = st.sidebar.selectbox(
@@ -24,20 +24,11 @@ elif option == 'Example 2: Range slider':
 # 例3
 elif option == 'Example 3: Range time slider':
     st.subheader('Range time slider')
-    
-    # 分単位での時間範囲を選択
-    appointment_range = st.slider(
+    appointment = st.slider(
         "Schedule your appointment:",
-        min_value=0,
-        max_value=24 * 60 - 1,  # 1日の分数
-        value=(11 * 60 + 30, 12 * 60 + 45)  # 初期値を11:30から12:45に設定
-    )
-    
-    # 分を時間と分に変換
-    appointment_start = time(appointment_range[0] // 60, appointment_range[0] % 60)
-    appointment_end = time(appointment_range[1] // 60, appointment_range[1] % 60)
-    
-    st.write("You're scheduled for:", appointment_start, "to", appointment_end)
+        value=(time(11, 30), time(12, 45)))
+    st.write("You're scheduled for:", appointment)
+
 
 # 例4
 elif option == 'Example 4: Datetime slider':
