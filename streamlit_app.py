@@ -49,12 +49,18 @@ elif option == 'Example 2: Range slider':
 # 例3
 elif option == 'Example 3: Range time slider':
     st.subheader('Range time slider')
-    appointment = st.slider(
+    appointment_range = st.slider(
         "Schedule your appointment:",
-        value=(time(11, 30), time(12, 45))
+        min_value=0,
+        max_value=24 * 60 - 1,  # 1日の分数
+        value=(11 * 60 + 30, 12 * 60 + 45)  # 初期値を11:30から12:45に設定
     )
     
-    st.write("You're scheduled for:", appointment)
+    # 分を時間と分に変換
+    appointment_start = time(appointment_range[0] // 60, appointment_range[0] % 60)
+    appointment_end = time(appointment_range[1] // 60, appointment_range[1] % 60)
+    
+    st.write("You're scheduled for:", appointment_start, "to", appointment_end)
 
 
 
