@@ -1,52 +1,40 @@
-import numpy as np
-import altair as alt
-import pandas as pd
 import streamlit as st
+from datetime import date, datetime
 
-st.header('st.write')
+st.header('st.slider')
 
 #例1
 
-st.write('Hello, *World!* emoji')
+st.subheader('Slider')
+
+age = st.slider('年齢はいくつですか？', 0, 130, 25)
+st.write('私の年齢は', age, 'です')
 
 #例2
 
-st.write(1234)
+st.subheader('Range slider')
+
+values = st.slider(
+    '値の範囲を選択してください'
+    0.0, 100.0, (25.0, 75.0))
+st.write('Values:', values)
+
 
 #例3
 
-df = pd.DataFrame({
-     'first column': [1, 2, 3, 4],
-     'second column': [10, 20, 30, 40]
-     })
-st.write(df)
+st.subheader('Range time slider')
+
+appointment = st.slider(
+     "Schedule your appointment:",
+     value=(time(11, 30), time(12, 45)))
+st.write("You're scheduled for:", appointment)
 
 #例4
 
-st.write('Below is a DataFrame:', df, 'Above is a dataframe.')
+st.subheader('Datetime slider')
 
-#例5
-
-df2 = pd.DataFrame(
-     np.random.randn(100, 3),
-     columns=['a', 'b', 'c'])
-c = alt.Chart(df2).mark_circle().encode(
-     x='a', y='b', size='c', color='c', tooltip=['a', 'b', 'c'])
-st.write(c)
-
-import numpy as np
-import matplotlib.pyplot as plt
-
-# データ生成
-data = np.random.randn(10000)
-
-# ヒストグラム描画
-plt.hist(data, bins=50, density=True)
-
-# タイトルとラベル
-plt.title('Standard Normal Distribution')
-plt.xlabel('Value')
-plt.ylabel('Frequency')
-
-# グラフ表示
-plt.show()
+start_time = st.slider(
+     "When do you start?",
+     value=datetime(2020, 1, 1, 9, 30),
+     format="MM/DD/YY - hh:mm")
+st.write("Start time:", start_time)
