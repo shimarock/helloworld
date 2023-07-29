@@ -1,5 +1,5 @@
 import streamlit as st
-from datetime import date, datetime
+from datetime import time, datetime
 
 st.header('st.slider')
 
@@ -7,18 +7,17 @@ st.header('st.slider')
 
 st.subheader('Slider')
 
-age = st.slider('年齢はいくつですか？', 0, 130, 25)
-st.write('私の年齢は', age, 'です')
+age = st.slider('How old are you?', 0, 130, 25)
+st.write("I'm ", age, 'years old')
 
 #例2
 
 st.subheader('Range slider')
 
 values = st.slider(
-    '値の範囲を選択してください'
-    0.0, 100.0, (25.0, 75.0))
+     'Select a range of values',
+     0.0, 100.0, (25.0, 75.0))
 st.write('Values:', values)
-
 
 #例3
 
